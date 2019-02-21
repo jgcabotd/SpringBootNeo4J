@@ -12,7 +12,8 @@ import java.util.Set;
 @NodeEntity
 public class Notification {
     @Id @GeneratedValue private Long id;
-    private Date date;
+    private String date;
+    private String time;
     private boolean itWasSent;
 
     @Relationship(type = "BELONGS_TO", direction = Relationship.UNDIRECTED)
@@ -31,20 +32,36 @@ public class Notification {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public boolean isItWasSent() {
         return itWasSent;
     }
 
     public void setItWasSent(boolean itWasSent) {
         this.itWasSent = itWasSent;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public Set<Provider> getProviders() {
+        return providers;
     }
 
     public void belongsToStudent(Student student){
@@ -65,7 +82,8 @@ public class Notification {
     public String toString() {
         return "Notification{" +
                 "id=" + id +
-                ", date=" + date +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
                 ", itWasSent=" + itWasSent +
                 ", students=" + students +
                 ", providers=" + providers +

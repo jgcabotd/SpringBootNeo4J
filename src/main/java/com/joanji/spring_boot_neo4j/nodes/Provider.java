@@ -33,7 +33,7 @@ public class Provider {
 
     @Override
     public String toString() {
-        return "Provider{" +
+        return "provider{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

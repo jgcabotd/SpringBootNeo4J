@@ -43,7 +43,7 @@ public class Absence {
 
     @Override
     public String toString() {
-        return "Absence{" +
+        return "absence{" +
                 "id=" + id +
                 ", date=" + date +
                 ", subject='" + subject + '\'' +
