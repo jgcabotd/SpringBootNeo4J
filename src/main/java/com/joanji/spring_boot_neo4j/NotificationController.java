@@ -36,10 +36,15 @@ public class NotificationController {
         LocalDate date = LocalDate.now();
         LocalTime time = LocalTime.now();
 
-        Notification notification = new Notification();
-        notification.setDate(date.format(dtfDate));
-        notification.setTime(time.format(dtfTime));
-        notification.setItWasSent(false);
+        Notification notification1 = new Notification();
+        notification1.setDate(date.format(dtfDate));
+        notification1.setTime(time.format(dtfTime));
+        notification1.setItWasSent(false);
+
+        Notification notification2 = new Notification();
+        notification2.setDate(date.format(dtfDate));
+        notification2.setTime(time.format(dtfTime));
+        notification2.setItWasSent(true);
 
         Teacher teacher = new Teacher();
         teacher.setDNI("45646969P");
@@ -48,19 +53,15 @@ public class NotificationController {
         teacher.setSurname("Cabot Dols");
         teacher.setPhoneNum("86598948");
 
-        teacher.receiveNotifications(notification);
+        teacher.receiveNotifications(notification1);
 
         teacherRepository.save(teacher);
 
         teacher = teacherRepository.findByName("Joan Guillem");
 
-        Notification notification1 = new Notification();
-        notification1.setDate(date.format(dtfDate));
-        notification1.setTime(time.format(dtfTime));
-        notification1.setItWasSent(false);
+        teacher.receiveNotifications(notification2);
 
-        teacher.receiveNotifications(notification1);
-
+        //The method save() also update nodes and create nodes.
         teacherRepository.save(teacher);
 
         return teacher;
