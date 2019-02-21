@@ -23,7 +23,7 @@ public class SpringBootNeo4jApplication {
         SpringApplication.run(SpringBootNeo4jApplication.class, args);
     }
 
-    @Bean
+    /*@Bean
     CommandLineRunner demo(TeacherRepository teacherRepository, NotificationRepository notificationRepository) {
         return args -> {
 
@@ -72,6 +72,6 @@ public class SpringBootNeo4jApplication {
                 System.out.println(notify.toString());
             }
         };
-    }
+    }*/
 
 }

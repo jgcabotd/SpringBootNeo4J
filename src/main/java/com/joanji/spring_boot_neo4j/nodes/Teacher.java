@@ -1,5 +1,7 @@
 package com.joanji.spring_boot_neo4j.nodes;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -17,6 +19,7 @@ public class Teacher {
     private String DNI, name, surname, mail, phoneNum;
 
     @Relationship(type = "RECEIVE", direction = Relationship.UNDIRECTED)
+    @JsonProperty("notifications")
     private Set<Notification> notifications;
 
     public Teacher(){}

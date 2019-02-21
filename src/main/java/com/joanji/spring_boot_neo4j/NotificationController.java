@@ -2,20 +2,43 @@ package com.joanji.spring_boot_neo4j;
 
 import com.joanji.spring_boot_neo4j.nodes.Notification;
 import com.joanji.spring_boot_neo4j.nodes.Teacher;
+import com.joanji.spring_boot_neo4j.repository.NotificationRepository;
+import com.joanji.spring_boot_neo4j.repository.TeacherRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 @RestController
 public class NotificationController {
+
+    private TeacherRepository teacherRepository;
+    private NotificationRepository notificationRepository;
+
+    @Autowired
+    public NotificationController(TeacherRepository teacherRepository, NotificationRepository notificationRepository) {
+        this.teacherRepository = teacherRepository;
+        this.notificationRepository = notificationRepository;
+    }
+
     @RequestMapping("/getSigning")
-    public void receiveSinging(){
-        /*teacherRepository.deleteAll();
+    public Teacher receiveSinging(){
+
+        teacherRepository.deleteAll();
         notificationRepository.deleteAll();
 
+        DateTimeFormatter dtfDate = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        DateTimeFormatter dtfTime = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+
         Notification notification = new Notification();
-        notification.setDate(new Date());
+        notification.setDate(date.format(dtfDate));
+        notification.setTime(time.format(dtfTime));
         notification.setItWasSent(false);
 
         Teacher teacher = new Teacher();
@@ -31,17 +54,15 @@ public class NotificationController {
 
         teacher = teacherRepository.findByName("Joan Guillem");
 
-        teacher.receiveNotifications(notification);
+        Notification notification1 = new Notification();
+        notification1.setDate(date.format(dtfDate));
+        notification1.setTime(time.format(dtfTime));
+        notification1.setItWasSent(false);
+
+        teacher.receiveNotifications(notification1);
 
         teacherRepository.save(teacher);
 
-        Iterable<Notification> notifications = notificationRepository.findAll();
-
-        System.out.println(teacher);
-
-        for (Notification notify : notifications){
-            System.out.println("Notificacion:");
-            System.out.println(notify.toString());
-        }*/
+        return teacher;
     }
 }
