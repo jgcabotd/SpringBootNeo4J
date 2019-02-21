@@ -2,8 +2,8 @@ package com.joanji.spring_boot_neo4j;
 
 import com.joanji.spring_boot_neo4j.nodes.Notification;
 import com.joanji.spring_boot_neo4j.nodes.Teacher;
-import com.joanji.spring_boot_neo4j.repository.NotificationRepository;
-import com.joanji.spring_boot_neo4j.repository.TeacherRepository;
+import com.joanji.spring_boot_neo4j.repositories.NotificationRepository;
+import com.joanji.spring_boot_neo4j.repositories.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,8 +24,8 @@ public class NotificationController {
         this.notificationRepository = notificationRepository;
     }
 
-    @RequestMapping("/getSigning")
-    public Teacher receiveSinging(){
+    @RequestMapping("/getTeacher")
+    public Teacher getTeacher(){
 
         teacherRepository.deleteAll();
         notificationRepository.deleteAll();
